@@ -1,0 +1,12 @@
+a)
+-für Pointer i wird 10-mal Speicher allokiert aber nur
+einmal Speicher freigegeben
+
+b)
+-Indizes sollten bei 0 anfangen, nicht bei 1
+
+c)
+-Es wurde nur der Speicher für den 
+äußeren Double Pointer freigegeben und nicht
+der für den int-Pointer, der auf die Zelle mit
+der 5 verweist 
