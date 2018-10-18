@@ -2,7 +2,7 @@ CC = gcc
 CFLAGS = -g -Wall
 OBJECTS = DynList.o
 
-aufg1_1:$(OBJECTS)
+DynList:$(OBJECTS)
 	$(CC) $(CFLAGS) -o $@ $(OBJECTS)
 
 %.o: %.c
