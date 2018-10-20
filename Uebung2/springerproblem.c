@@ -20,6 +20,8 @@ int main() {
 }
 
 void knights_tour(struct board_t* b) {
+    print_board(b);
+    puts("\n");
     if (visited_fields(b) >= n*n) {
         printf("Solution %i:\n", ++solcnt);
         print_board(b);

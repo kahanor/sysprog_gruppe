@@ -65,7 +65,7 @@ int isfree(struct board_t *b, int x, int y){
         int pos_y;
         for(pos_y = 0; pos_y < b->n; pos_y++){
             //Prüfen ob Ziel innerhalb des Bretts liegt
-            if(b->fields[pos_x][pos_y] == vfs && pos_x+x < b->n && pos_y+y < b->n){
+            if(b->fields[pos_x][pos_y] == vfs && pos_x+x < b->n && pos_y+y < b->n && pos_x+x >= 0 && pos_y+y >= 0){
                 //Prüfen ob Feld besucht wurde
                 if(b->fields[pos_x+x][pos_y+y] == 0)
                     return 1;
@@ -103,29 +103,43 @@ int init_board(struct board_t *b, int n, int x, int y){
     if(x >= n || y >= n)
         return 1;
 
-    //Speicherplatzreservierung für Pointer auf Brett(?)
-    b = malloc(sizeof(struct board*));
+    //Initialisierung und Speicherplatzreservierung für neuen, vorübergehenden Pointer auf Brett
+    struct board_t *tmp = malloc(sizeof(struct board_t));
+    if(tmp == NULL)
+        return 1;
 
     //Initialisierung der Variablen von b
-    b->n = n;
-    b->startpos_x = x;
-    b->startpos_y = y;
+    tmp->n = n;
+    tmp->startpos_x = x;
+    tmp->startpos_y = y;
 
     //Speicherplatzreservierung für Double Pointer
-    b->fields = malloc(n*sizeof(int*));
-
+    tmp->fields = malloc(n*sizeof(int*));
+    if(tmp->fields == NULL){
+        free(tmp);
+        return 1;
+    }
     int pos_x;
     for(pos_x = 0; pos_x < n; pos_x ++){
         //Speicherplatzreservierung für Arrays im Double Pointer
-        b->fields[pos_x] = malloc(n*sizeof(int));
+        tmp->fields[pos_x] = malloc(n*sizeof(int));
+        if(tmp->fields[pos_x] == NULL){
+            free(tmp->fields);
+            free(tmp);
+            return 1;
+        }
         int pos_y;
         for(pos_y = 0; pos_y < n; pos_y++){
             //Setze alle Felder auf unbesucht
-            b->fields[pos_x][pos_y] = 0;
+            tmp->fields[pos_x][pos_y] = 0;
         }
     }
     //Setze Startfeld als erstes besuchtes Feld
-    b->fields[x][y] = 1;
+    tmp->fields[x][y] = 1;
+
+    //Setze Inhalt des ursprünglichen Brett-Pointers auf den des vorübergehenden Pointers und gib von Letzterem den Speicher frei
+    *b = *tmp;
+    free(tmp);
     return 0;
 }
 
@@ -137,7 +151,4 @@ void free_board(struct board_t *b){
     }
     //Gib Speicher des Double Pointers frei
     free(b->fields);
-
-    //Gib Speicher des Brett-Pointers frei(?)
-    free(b);
 }
