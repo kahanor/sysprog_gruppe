@@ -1,0 +1,1 @@
+-nbad -bap -bbb -lc100 -cdb -sc -nsob -br -nce -ncdw -cli0 -npcs -nss -cs -saf -saw -sai -nprs -di1 -nbc -npsl -brs -brf -i2 -ci2 -lp -ip0 -bbo -hnl -sob
