@@ -4,8 +4,8 @@
 #define MAX 100
 
 /*
-* struct für die Einträge in der dynamischen Liste. Jeder
-* Eintrag hat zwei char-Arrays für Vor- und Nachnamen und einen
+* struct für die Einträge in der dynamischen Liste. Jeder
+* Eintrag hat zwei char-Arrays für Vor- und Nachnamen und einen
 * Pointer auf den nächsten Eintrag
 */
     typedef struct node {
@@ -15,10 +15,10 @@
 } node;
 
 /*
-* insertNode() fügt einen neuen Eintrag an der korrekten Stelle
-* (alphabetisch nach Nachnamen sortiert) ein; bekommt das erste
-* Listenelement und den Namen, der eingetragen werden soll als
-* zwei char-Pointer übergeben; returnt wieder das erste Element
+* insertNode() fügt einen neuen Eintrag an der korrekten Stelle
+* (alphabetisch nach Nachnamen sortiert) ein; bekommt das erste
+* Listenelement und den Namen, der eingetragen werden soll als
+* zwei char-Pointer übergeben; returnt wieder das erste Element
 * der Liste
 */
     node * insertNode(node * head, char *fname, char *sname)
@@ -55,8 +55,8 @@
 
 
 /*
-* printList() gibt die gesamte Liste aus; bekommt das erste
-* Element der Liste übergeben
+* printList() gibt die gesamte Liste aus; bekommt das erste
+* Element der Liste übergeben
 */
 void printList(node * head)
 {
@@ -69,8 +69,10 @@ void printList(node * head)
 
 
 /*
-* freeList() gibt den gesamten Speicher, der für die Liste
-* allokiert wurde, wieder frei; bekommt das erste Listenelement
+*
+ freeList() gibt den gesamten Speicher, der für die Liste
+* allokiert wurde,
+ wieder frei; bekommt das erste Listenelement
 * übergeben
 */
 void freeList(node * head)
@@ -85,9 +87,9 @@ void freeList(node * head)
 
 
 /*
-* das Programm fragt zuerst nach einer Datei, in der eine
-* Namensliste enthalten ist, liesst die Datei ein, speichert die
-* Namen sortiert nach Nachnamen in einer Liste, gibt die Liste aus
+* das Programm fragt zuerst nach einer Datei, in der eine
+* Namensliste enthalten ist, liesst die Datei ein, speichert die
+* Namen sortiert nach Nachnamen in einer Liste, gibt die Liste aus
 * und gibt danach den Speicher wieder frei
 */
 int main()
