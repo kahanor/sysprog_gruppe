@@ -114,7 +114,7 @@ int init_board(struct board_t *b, int n, int x, int y){
     tmp->startpos_y = y;
 
     //Speicherplatzreservierung fuer Double Pointer
-    tmp->fields = malloc(n*sizeof(int*));
+    tmp->fields = (int**) malloc(n*sizeof(int*));
     if(tmp->fields == NULL){
         free(tmp);
         return 1;
@@ -122,7 +122,7 @@ int init_board(struct board_t *b, int n, int x, int y){
     int pos_x;
     for(pos_x = 0; pos_x < n; pos_x ++){
         //Speicherplatzreservierung fuer Arrays im Double Pointer
-        tmp->fields[pos_x] = malloc(n*sizeof(int));
+        tmp->fields[pos_x] = (int*) malloc(n*sizeof(int));
         if(tmp->fields[pos_x] == NULL){
             free(tmp->fields);
             free(tmp);
