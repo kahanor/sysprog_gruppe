@@ -15,7 +15,7 @@ int visited_fields(struct board_t *b){
     for(x = 0; x < b->n; x++){
         int y;
         for(y = 0; y < b->n; y++){
-            //Falls Feld besucht worden ist, erhöhe Anzahl
+            //Falls Feld besucht worden ist, erhoehe Anzahl
             if(b->fields[x][y] != 0)
                 output++;
         }
@@ -48,7 +48,7 @@ int remove_jump(struct board_t *b, int x, int y){
         int pos_y;
         for(pos_y = 0; pos_y < b->n; pos_y++){
             if(b->fields[pos_x][pos_y] == vfs){
-                //Zurücksetzen der Markierung
+                //Zuruecksetzen der Markierung
                 b->fields[pos_x][pos_y] = 0;
                 return 1;
             }
@@ -64,9 +64,9 @@ int isfree(struct board_t *b, int x, int y){
     for(pos_x = 0; pos_x < b->n; pos_x++){
         int pos_y;
         for(pos_y = 0; pos_y < b->n; pos_y++){
-            //Prüfen ob Ziel innerhalb des Bretts liegt
+            //Pruefen ob Ziel innerhalb des Bretts liegt
             if(b->fields[pos_x][pos_y] == vfs && pos_x+x < b->n && pos_y+y < b->n && pos_x+x >= 0 && pos_y+y >= 0){
-                //Prüfen ob Feld besucht wurde
+                //Pruefen ob Feld besucht wurde
                 if(b->fields[pos_x+x][pos_y+y] == 0)
                     return 1;
             }
@@ -99,12 +99,12 @@ void print_board(struct board_t *b){
 }
 
 int init_board(struct board_t *b, int n, int x, int y){
-    //Prüfen ob Startposition im Brett liegt
+    //Pruefen ob Startposition im Brett liegt
     if(x >= n || y >= n)
         return 1;
 
-    //Initialisierung und Speicherplatzreservierung für neuen, vorübergehenden Pointer auf Brett
-    struct board_t *tmp = malloc(sizeof(struct board_t));
+    //Initialisierung und Speicherplatzreservierung fuer neuen, voruebergehenden Pointer auf Brett
+    struct board_t *tmp = (struct board_t*)malloc(sizeof(struct board_t));
     if(tmp == NULL)
         return 1;
 
@@ -113,7 +113,7 @@ int init_board(struct board_t *b, int n, int x, int y){
     tmp->startpos_x = x;
     tmp->startpos_y = y;
 
-    //Speicherplatzreservierung für Double Pointer
+    //Speicherplatzreservierung fuer Double Pointer
     tmp->fields = malloc(n*sizeof(int*));
     if(tmp->fields == NULL){
         free(tmp);
@@ -121,7 +121,7 @@ int init_board(struct board_t *b, int n, int x, int y){
     }
     int pos_x;
     for(pos_x = 0; pos_x < n; pos_x ++){
-        //Speicherplatzreservierung für Arrays im Double Pointer
+        //Speicherplatzreservierung fuer Arrays im Double Pointer
         tmp->fields[pos_x] = malloc(n*sizeof(int));
         if(tmp->fields[pos_x] == NULL){
             free(tmp->fields);
@@ -137,7 +137,7 @@ int init_board(struct board_t *b, int n, int x, int y){
     //Setze Startfeld als erstes besuchtes Feld
     tmp->fields[x][y] = 1;
 
-    //Setze Inhalt des ursprünglichen Brett-Pointers auf den des vorübergehenden Pointers und gib von Letzterem den Speicher frei
+    //Setze Inhalt des urspruenglichen Brett-Pointers auf den des voruebergehenden Pointers und gib von Letzterem den Speicher frei
     *b = *tmp;
     free(tmp);
     return 0;
