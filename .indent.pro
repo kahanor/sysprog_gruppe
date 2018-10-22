@@ -1,1 +1,1 @@
--nbad -bap -bbb -lc100 -cdb -sc -nsob -br -nce -ncdw -cli0 -npcs -nss -cs -saf -saw -sai -nprs -di1 -nbc -npsl -brs -brf -i2 -ci2 -lp -ip0 -bbo -hnl -sob
+-nbad -bap -bbb -fca -fc1 -lc100 -l100 -c33 -cd33 -cp1 -cdb -sc -nsob -br -nce -ncdw -cli0 -npcs -nss -cs -saf -saw -sai -nprs -di1 -nbc -npsl -brs -brf -i2 -ci2 -lp -ip0 -bbo -hnl
