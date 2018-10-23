@@ -3,13 +3,14 @@
 #include <string.h>
 #include "genList.h"
 
-void listInit(list* list, int elementSize, deleteFunction deleteFn){
+void listInit(list* list, int elementSize, deleteFunction deleteFn, printFunction printFn){
     //list = malloc(sizeof(list));
     list->elementSize = elementSize;
     list->length = 0;
     list->head = NULL;
     list->tail = NULL;
     list->deleteFn = deleteFn;
+    list->printFn = printFn;
 }
 
 void listDelete(list *list){
@@ -40,4 +41,15 @@ void listAppend(list *list, void *element){
         list->tail = newNode;
     }
     list->length++;
+}
+
+void printList(list *list){
+    Node *current;
+    current = list->head;
+    while(current->next != NULL){
+        current = current->next;
+        if(list->printFn){
+            list->printFn(current->data);
+        }
+    }
 }

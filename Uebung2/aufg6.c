@@ -8,7 +8,13 @@
 void deleteString(void *data){
     free(*(char **)data);
 }
+void printString(void *data){
+    printf("%s \n",*(char **)data);
+}
 
+void printInt(void *data){
+    printf("%i \n", *(int **)data);
+}
 int main(int argc, char* argv[]){
     char path[MAX];
     printf("Datei Pfad eingeben: ");
@@ -34,22 +40,25 @@ int main(int argc, char* argv[]){
     
     const char *names[] = {"Peter", "Olf", "Guenter", "Merlin", "Nemo"};
     list newList;
-    listInit(&newList, sizeof(char *), &deleteString);
+    listInit(&newList, sizeof(char *), &deleteString, &printString);
     char *name;
     for(int i=0; i<5; i++){
         name = strdup(names[i]);
-        listAppend(&newList, &name);
+        listAppend(&newList, &name);//Anstelle &name kommt dann &<sortierFn>
     }
-    printf("TEST 5\n");
+    printList(&newList);
 
     listDelete(&newList);
     
+    
     list intList;
-    listInit(&intList, sizeof(int), NULL);
+    listInit(&intList, sizeof(int), NULL, &printInt);
     for(int i=0; i<10; i++){
         listAppend(&intList, &i);
     }
+    printList(&newList);
     listDelete(&intList);
+    
 
     /*
      *Nach Valgrind kein Memory leak:
