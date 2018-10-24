@@ -16,8 +16,9 @@ int visited_fields(struct board_t *b) {
     int y;
     for (y = 0; y < b->n; y++) {
       // Falls Feld besucht worden ist, erhoehe Anzahl
-      if (b->fields[x][y] != 0)
-	output++;
+      if (b->fields[x][y] != 0) {
+        output++;
+      }
     }
   }
   return output;
@@ -31,9 +32,9 @@ int new_jump(struct board_t *b, int x, int y) {
     int pos_y;
     for (pos_y = 0; pos_y < b->n; pos_y++) {
       if (b->fields[pos_x][pos_y] == vfs) {
-	// Neues Feld markieren
-	b->fields[pos_x + x][pos_y + y] = vfs + 1;
-	return 1;
+	      // Neues Feld markieren
+	      b->fields[pos_x + x][pos_y + y] = vfs + 1;
+	      return 1;
       }
     }
   }
@@ -48,9 +49,9 @@ int remove_jump(struct board_t *b, int x, int y) {
     int pos_y;
     for (pos_y = 0; pos_y < b->n; pos_y++) {
       if (b->fields[pos_x][pos_y] == vfs) {
-	// Zuruecksetzen der Markierung
-	b->fields[pos_x][pos_y] = 0;
-	return 1;
+	      // Zuruecksetzen der Markierung
+	      b->fields[pos_x][pos_y] = 0;
+	      return 1;
       }
     }
   }
@@ -66,10 +67,11 @@ int isfree(struct board_t *b, int x, int y) {
     for (pos_y = 0; pos_y < b->n; pos_y++) {
       // Pruefen ob Ziel innerhalb des Bretts liegt
       if (b->fields[pos_x][pos_y] == vfs && pos_x + x < b->n && pos_y + y < b->n && pos_x + x >= 0
-	  && pos_y + y >= 0) {
-	// Pruefen ob Feld besucht wurde
-	if (b->fields[pos_x + x][pos_y + y] == 0)
-	  return 1;
+	        && pos_y + y >= 0) {
+	      // Pruefen ob Feld besucht wurde
+	      if (b->fields[pos_x + x][pos_y + y] == 0) {
+	        return 1;
+        }
       }
     }
   }
@@ -106,9 +108,10 @@ int init_board(struct board_t *b, int n, int x, int y) {
 
   // Initialisierung und Speicherplatzreservierung fuer neuen, voruebergehenden Pointer auf Brett
   struct board_t *tmp = (struct board_t *) malloc(sizeof(struct board_t));
-  if (tmp == NULL)
+  if (tmp == NULL) {
     return 1;
-
+  }
+  
   // Initialisierung der Variablen von b
   tmp->n = n;
   tmp->startpos_x = x;

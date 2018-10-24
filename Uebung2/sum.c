@@ -11,7 +11,7 @@ int main(void){
     scanf("%i",&number2);
 
     if(number1 == number2){
-        printf("Die eingebenen Zahlen sind identisch.\n");
+      printf("Die eingebenen Zahlen sind identisch.\n");
     }
 
     printf("Die Summe von %i und %i ist %i.\n",
