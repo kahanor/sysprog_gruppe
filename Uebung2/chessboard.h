@@ -9,6 +9,8 @@ struct board_t {
 };
 
 int visited_fields(struct board_t *b) {
+  if(b == NULL)
+    return -1;
   int output = 0;
   // Gehe durch gesamtes Brett
   int x;
@@ -25,6 +27,8 @@ int visited_fields(struct board_t *b) {
 }
 
 int new_jump(struct board_t *b, int x, int y) {
+  if(b == NULL)
+    return 0;
   int vfs = visited_fields(b);
   // Suche nach alter Position
   int pos_x;
@@ -42,6 +46,8 @@ int new_jump(struct board_t *b, int x, int y) {
 }
 
 int remove_jump(struct board_t *b, int x, int y) {
+  if(b == NULL)
+    return 0;
   int vfs = visited_fields(b);
   // Suche nach alter Position
   int pos_x;
@@ -59,6 +65,8 @@ int remove_jump(struct board_t *b, int x, int y) {
 }
 
 int isfree(struct board_t *b, int x, int y) {
+  if(b == NULL)
+    return 0;
   int vfs = visited_fields(b);
   // Suche nach alter Position
   int pos_x;
@@ -79,6 +87,9 @@ int isfree(struct board_t *b, int x, int y) {
 }
 
 void print_board(struct board_t *b) {
+  if(b == NULL)
+    puts("Fehler: Parameter b ist NULL");
+    return;
   int x;
   for (x = 0; x < b->n; x++) {
     // Horizontaler Strich
@@ -102,8 +113,8 @@ void print_board(struct board_t *b) {
 }
 
 int init_board(struct board_t *b, int n, int x, int y) {
-  // Pruefen ob Startposition im Brett liegt
-  if (x >= n || y >= n)
+  // Pruefen ob Startposition im Brett liegt und board_t-Pointer nicht NULL ist
+  if (x >= n || y >= n || b == NULL)
     return 1;
 
   // Initialisierung und Speicherplatzreservierung fuer neuen, voruebergehenden Pointer auf Brett
@@ -111,7 +122,7 @@ int init_board(struct board_t *b, int n, int x, int y) {
   if (tmp == NULL) {
     return 1;
   }
-  
+
   // Initialisierung der Variablen von b
   tmp->n = n;
   tmp->startpos_x = x;
@@ -149,6 +160,9 @@ int init_board(struct board_t *b, int n, int x, int y) {
 }
 
 void free_board(struct board_t *b) {
+  if(b == NULL)
+    puts("Fehler: Parameter b ist NULL");
+    return;
   int i;
   for (i = 0; i < b->n; i++) {
     // Gib Speicher aller Arrays im Double Pointer frei
