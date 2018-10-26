@@ -13,8 +13,9 @@ struct board_t b;
 void knights_tour(struct board_t *b);
 
 int main() {
-  if (init_board(&b, n, start_x, start_y) > 0)
+  if (init_board(&b, n, start_x, start_y) > 0) {
     return EXIT_FAILURE;
+  }
   knights_tour(&b);
   free_board(&b);
   return EXIT_SUCCESS;
@@ -30,9 +31,9 @@ void knights_tour(struct board_t *b) {
     int i;
     for (i = 0; i < 8; i++) {
       if (isfree(b, moves[i][0], moves[i][1])) {
-	new_jump(b, moves[i][0], moves[i][1]);
-	knights_tour(b);
-	remove_jump(b, moves[i][0], moves[i][1]);
+	      new_jump(b, moves[i][0], moves[i][1]);
+	      knights_tour(b);
+	      remove_jump(b, moves[i][0], moves[i][1]);
       }
     }
   }

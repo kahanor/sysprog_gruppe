@@ -3,6 +3,10 @@
 #include "chessboard.h"
 
 int visited_fields(struct board_t *b) {
+  if(b == NULL) {
+    perror("Error: Unexpected NULL-Pointer\n");
+    return EXIT_FAILURE;
+  }
   int output = 0;
   // Gehe durch gesamtes Brett
   int x;
@@ -10,14 +14,19 @@ int visited_fields(struct board_t *b) {
     int y;
     for (y = 0; y < b->n; y++) {
       // Falls Feld besucht worden ist, erhoehe Anzahl
-      if (b->fields[x][y] != 0)
-	output++;
+      if (b->fields[x][y] != 0) {
+	      output++;
+      }
     }
   }
   return output;
 }
 
 int new_jump(struct board_t *b, int x, int y) {
+  if(b == NULL) {
+    perror("Error: Unexpected NULL-Pointer\n");
+    return EXIT_FAILURE;
+  }
   int vfs = visited_fields(b);
   // Suche nach alter Position
   int pos_x;
@@ -25,9 +34,9 @@ int new_jump(struct board_t *b, int x, int y) {
     int pos_y;
     for (pos_y = 0; pos_y < b->n; pos_y++) {
       if (b->fields[pos_x][pos_y] == vfs) {
-	// Neues Feld markieren
-	b->fields[pos_x + x][pos_y + y] = vfs + 1;
-	return 1;
+	      // Neues Feld markieren
+	      b->fields[pos_x + x][pos_y + y] = vfs + 1;
+	      return 1;
       }
     }
   }
@@ -35,6 +44,10 @@ int new_jump(struct board_t *b, int x, int y) {
 }
 
 int remove_jump(struct board_t *b, int x, int y) {
+  if(b == NULL) {
+    perror("Error: Unexpected NULL-Pointer\n");
+    return EXIT_FAILURE;
+  }
   int vfs = visited_fields(b);
   // Suche nach alter Position
   int pos_x;
@@ -42,9 +55,9 @@ int remove_jump(struct board_t *b, int x, int y) {
     int pos_y;
     for (pos_y = 0; pos_y < b->n; pos_y++) {
       if (b->fields[pos_x][pos_y] == vfs) {
-	// Zuruecksetzen der Markierung
-	b->fields[pos_x][pos_y] = 0;
-	return 1;
+      	// Zuruecksetzen der Markierung
+      	b->fields[pos_x][pos_y] = 0;
+      	return 1;
       }
     }
   }
@@ -52,6 +65,10 @@ int remove_jump(struct board_t *b, int x, int y) {
 }
 
 int isfree(struct board_t *b, int x, int y) {
+  if(b == NULL) {
+    perror("Error: Unexpected NULL-Pointer\n");
+    return EXIT_FAILURE;
+  }
   int vfs = visited_fields(b);
   // Suche nach alter Position
   int pos_x;
@@ -71,6 +88,10 @@ int isfree(struct board_t *b, int x, int y) {
 }
 
 void print_board(struct board_t *b) {
+  if(b == NULL) {
+    perror("Error: Unexpected NULL-Pointer\n");
+    return;
+  }
   int x;
   for (x = 0; x < b->n; x++) {
     // Horizontaler Strich
@@ -94,6 +115,10 @@ void print_board(struct board_t *b) {
 }
 
 int init_board(struct board_t *b, int n, int x, int y) {
+  if(b == NULL) {
+    perror("Error: Unexpected NULL-Pointer\n");
+    return EXIT_FAILURE;
+  }
   // Pruefen ob Startposition im Brett liegt
   if (x >= n || y >= n)
     return 1;
@@ -140,6 +165,10 @@ int init_board(struct board_t *b, int n, int x, int y) {
 }
 
 void free_board(struct board_t *b) {
+  if(b == NULL) {
+    perror("Error: Unexpected NULL-Pointer\n");
+    return;
+  }
   int i;
   for (i = 0; i < b->n; i++) {
     // Gib Speicher aller Arrays im Double Pointer frei
