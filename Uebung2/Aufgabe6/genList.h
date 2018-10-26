@@ -19,19 +19,6 @@ typedef struct Node{
 } Node;
 
 /*
-typedef struct List{
-  int elementSize;
-  int length;
-  Node *head;
-  Node *tail;
-  deleteFunction deleteFn;
-  printFunction printFn;
-  compareFunction compareFn;
-} List;
-void listInit(List *list, int elementSize);
-*/
-
-/*
  * Definition der benötigten Funktionen, um die Liste zu verwalten
  */
 void deleteList(Node *head, deleteFunction deleteFn);

@@ -4,22 +4,6 @@
 #include "genList.h"
 
 /*
-void listInit(List *list, int elementSize, deleteFunction deleteFn, printFunction printFn, compareFunction compareFn) {
-  printf("Initialisiere Liste");
-  // list = malloc(sizeof(List));
-  printf("Speicher allokiert");
-  list->elementSize = elementSize;
-  list->length = 0;
-  list->head = NULL;
-  list->tail = NULL;
-  list->deleteFn = deleteFn;
-  list->printFn = printFn;
-  list->compareFn = compareFn;
-  printf("Liste initialisiert");
-}
-*/
-
-/*
  * deleteList() gibt den für die gesamte Liste allokierten Speicher wieder frei,
  * erhält den Anfang der Liste und die deleteFunction, um die einzelenen Elemente zu löschen
  */
@@ -68,7 +52,7 @@ Node *insertSorted(Node *head, void *element, size_t elementSize, compareFunctio
     return NULL;
   }
   Node *newNode = NULL;
-  newNode = malloc(sizeof(Node));
+  newNode = (Node *) malloc(sizeof(Node));
   newNode->data = malloc(elementSize);
   memcpy(newNode->data, element, elementSize);
   if(head == NULL){
