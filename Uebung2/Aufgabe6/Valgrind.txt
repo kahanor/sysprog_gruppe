@@ -14,3 +14,114 @@
 ==4609== For counts of detected and suppressed errors, rerun with: -v
 ==4609== Use --track-origins=yes to see where uninitialised values come from
 ==4609== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 0 from 0)
+
+++++++++++++++++++++++++++++++++++++++++++++
+        Valgrind mit -v option:
+++++++++++++++++++++++++++++++++++++++++++++
+
+
+==5172== HEAP SUMMARY:
+==5172==     in use at exit: 552 bytes in 1 blocks
+==5172==   total heap usage: 16 allocs, 15 frees, 9,320 bytes allocated
+==5172== 
+==5172== Searching for pointers to 1 not-freed blocks
+==5172== Checked 68,584 bytes
+==5172== 
+==5172== LEAK SUMMARY:
+==5172==    definitely lost: 0 bytes in 0 blocks
+==5172==    indirectly lost: 0 bytes in 0 blocks
+==5172==      possibly lost: 0 bytes in 0 blocks
+==5172==    still reachable: 552 bytes in 1 blocks
+==5172==         suppressed: 0 bytes in 0 blocks
+==5172== Reachable blocks (those to which a pointer was found) are not shown.
+==5172== To see them, rerun with: --leak-check=full --show-leak-kinds=all
+==5172== 
+==5172== Use --track-origins=yes to see where uninitialised values come from
+==5172== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 0 from 0)
+==5172== 
+==5172== 1 errors in context 1 of 1:
+==5172== Conditional jump or move depends on uninitialised value(s)
+==5172==    at 0x109C25: insertSorted (in /home/lucca/Dokumente/sciebo/Uni/3.Semester/SysProg/GitLabRepo/sysprog7b/Uebung2/Aufgabe6/aufg6)
+==5172==    by 0x109783: main (in /home/lucca/Dokumente/sciebo/Uni/3.Semester/SysProg/GitLabRepo/sysprog7b/Uebung2/Aufgabe6/aufg6)
+==5172== 
+==5172== ERROR SUMMARY: 1 errors from 1 contexts
+
+/*************************************************
+*unitialisierte Werte in insertSorted & main
+**************************************************/
+
++++++++++++++++++++++++++++++++++++++++++++++++++++
+    valgrind mit -v und --track-origin=yes
++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+==5232== HEAP SUMMARY:
+==5232==     in use at exit: 552 bytes in 1 blocks
+==5232==   total heap usage: 16 allocs, 15 frees, 9,320 bytes allocated
+==5232== 
+==5232== Searching for pointers to 1 not-freed blocks
+==5232== Checked 68,584 bytes
+==5232== 
+==5232== LEAK SUMMARY:
+==5232==    definitely lost: 0 bytes in 0 blocks
+==5232==    indirectly lost: 0 bytes in 0 blocks
+==5232==      possibly lost: 0 bytes in 0 blocks
+==5232==    still reachable: 552 bytes in 1 blocks
+==5232==         suppressed: 0 bytes in 0 blocks
+==5232== Reachable blocks (those to which a pointer was found) are not shown.
+==5232== To see them, rerun with: --leak-check=full --show-leak-kinds=all
+==5232== 
+==5232== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 0 from 0)
+==5232== 
+==5232== 1 errors in context 1 of 1:
+==5232== Conditional jump or move depends on uninitialised value(s)
+==5232==    at 0x109C25: insertSorted (in /home/lucca/Dokumente/sciebo/Uni/3.Semester/SysProg/GitLabRepo/sysprog7b/Uebung2/Aufgabe6/aufg6)
+==5232==    by 0x109783: main (in /home/lucca/Dokumente/sciebo/Uni/3.Semester/SysProg/GitLabRepo/sysprog7b/Uebung2/Aufgabe6/aufg6)
+==5232==  Uninitialised value was created by a heap allocation
+==5232==    at 0x483777F: malloc (vg_replace_malloc.c:299)
+==5232==    by 0x109B5A: insertSorted (in /home/lucca/Dokumente/sciebo/Uni/3.Semester/SysProg/GitLabRepo/sysprog7b/Uebung2/Aufgabe6/aufg6)
+==5232==    by 0x109783: main (in /home/lucca/Dokumente/sciebo/Uni/3.Semester/SysProg/GitLabRepo/sysprog7b/Uebung2/Aufgabe6/aufg6)
+==5232== 
+==5232== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 0 from 0)
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+  mit zusaetzlich --leak-check-full --show-leak-kinds=all
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+==5245== HEAP SUMMARY:
+==5245==     in use at exit: 552 bytes in 1 blocks
+==5245==   total heap usage: 16 allocs, 15 frees, 9,320 bytes allocated
+==5245== 
+==5245== Searching for pointers to 1 not-freed blocks
+==5245== Checked 68,584 bytes
+==5245== 
+==5245== 552 bytes in 1 blocks are still reachable in loss record 1 of 1
+==5245==    at 0x483777F: malloc (vg_replace_malloc.c:299)
+==5245==    by 0x48F919F: __fopen_internal (in /usr/lib/libc-2.28.so)
+==5245==    by 0x10962D: main (in /home/lucca/Dokumente/sciebo/Uni/3.Semester/SysProg/GitLabRepo/sysprog7b/Uebung2/Aufgabe6/aufg6)
+==5245== 
+==5245== LEAK SUMMARY:
+==5245==    definitely lost: 0 bytes in 0 blocks
+==5245==    indirectly lost: 0 bytes in 0 blocks
+==5245==      possibly lost: 0 bytes in 0 blocks
+==5245==    still reachable: 552 bytes in 1 blocks
+==5245==         suppressed: 0 bytes in 0 blocks
+==5245== 
+==5245== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 0 from 0)
+==5245== 
+==5245== 1 errors in context 1 of 1:
+==5245== Conditional jump or move depends on uninitialised value(s)
+==5245==    at 0x109C25: insertSorted (in /home/lucca/Dokumente/sciebo/Uni/3.Semester/SysProg/GitLabRepo/sysprog7b/Uebung2/Aufgabe6/aufg6)
+==5245==    by 0x109783: main (in /home/lucca/Dokumente/sciebo/Uni/3.Semester/SysProg/GitLabRepo/sysprog7b/Uebung2/Aufgabe6/aufg6)
+==5245==  Uninitialised value was created by a heap allocation
+==5245==    at 0x483777F: malloc (vg_replace_malloc.c:299)
+==5245==    by 0x109B5A: insertSorted (in /home/lucca/Dokumente/sciebo/Uni/3.Semester/SysProg/GitLabRepo/sysprog7b/Uebung2/Aufgabe6/aufg6)
+==5245==    by 0x109783: main (in /home/lucca/Dokumente/sciebo/Uni/3.Semester/SysProg/GitLabRepo/sysprog7b/Uebung2/Aufgabe6/aufg6)
+==5245== 
+==5245== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 0 from 0)
+
+/*******************************************************************
+*  ==> ACHTUNG: moeglicher Fehler bei:
+*       - malloc in fopen in main
+*       - insertSorted in main
+*      - malloc in insertSorted in main
+********************************************************************/
