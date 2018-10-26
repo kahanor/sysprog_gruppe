@@ -1,0 +1,16 @@
+==4609== HEAP SUMMARY:
+==4609==     in use at exit: 552 bytes in 1 blocks
+==4609==   total heap usage: 16 allocs, 15 frees, 9,320 bytes allocated
+==4609== 
+==4609== LEAK SUMMARY:
+==4609==    definitely lost: 0 bytes in 0 blocks
+==4609==    indirectly lost: 0 bytes in 0 blocks
+==4609==      possibly lost: 0 bytes in 0 blocks
+==4609==    still reachable: 552 bytes in 1 blocks
+==4609==         suppressed: 0 bytes in 0 blocks
+==4609== Reachable blocks (those to which a pointer was found) are not shown.
+==4609== To see them, rerun with: --leak-check=full --show-leak-kinds=all
+==4609== 
+==4609== For counts of detected and suppressed errors, rerun with: -v
+==4609== Use --track-origins=yes to see where uninitialised values come from
+==4609== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 0 from 0)
