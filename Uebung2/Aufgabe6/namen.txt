@@ -1,3 +1,4 @@
 Henry Ford 30 07 1863 Detroit
 Wilhelm Busch 15 04 1832 Mechtshausen
-Peter Meinolf 12 03 1273 lolhausen
+Peter Meinolf 12 03 1273 Lolhausen
+Max Mustermann 13 04 1832 Bonn
