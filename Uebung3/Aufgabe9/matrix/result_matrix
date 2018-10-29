@@ -1,0 +1,3 @@
+[TEST]
+arguments:["target/debug/matrix", "1,2;1,2", "+", "1,-2;1,-2"]
+successfully wrote to lorem_ipsum.txt
