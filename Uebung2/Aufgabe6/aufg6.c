@@ -25,10 +25,8 @@ Person *initPerson(char *fname, char *sname, int bday, int bmonth, int byear, ch
     perror("Error: Unexpected NULL-Pointer\n");
     return NULL;
   }
-  Person *newPerson = malloc(sizeof(Person));
-  if (NULL == newPerson) {
-    return NULL;
-  }
+  Person *newPerson = NULL;
+  newPerson = (Person *) malloc(sizeof(Person));
   strncpy(newPerson->forename, fname, MAX);
   strncpy(newPerson->surname, sname, MAX);
   newPerson->birthday = bday;

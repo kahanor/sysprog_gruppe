@@ -1,0 +1,25 @@
+Übung 1:
+Aufgabe 1:
+
+Strings mit maximal 100 Zeichen -> 101 Zeichen allokieren
+
+Nach jedem Aufruf von malloc / fopen: NULL-Pointer Überprüfung
+if (NULL == ptr) {
+        perror("Fehler");
+        // ggf. bereits allokierten Speicher freigeben
+        return EXIT_FAILURE;
+}
+
+aus Sicherheitsgründen strncpy(), strncmp() verwenden
+Strings immer mit fgets() einlesen
+
+bei allen Funktionen, die einen Pointer als Parameter haben: Vor der Dereferenzierung auf NULL prüfen
+
+Rückgabewert der main-Funktion sollte EXIT_SUCCESS / EXIT_FAILURE sein
+
+valgrind-Ausgabe fehlt
+
+=> -1 Punkt
+
+makefile:
+Regel clean sollte ergänzt werden
