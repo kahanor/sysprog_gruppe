@@ -35,7 +35,11 @@ fn main() {
     
     //"normal":
     let hello_world = "Hello, World";
+    //literal:
     let hello_world2: &'static str = "Hello, World";
+
+
+    
     let path = Path::new("lorem_ipsum.txt");
     let display = path.display();
 
