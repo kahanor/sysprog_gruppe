@@ -12,16 +12,49 @@ use std::io::prelude::*;
 use std::fs::File;
 use std::path::Path;
 use std::env;
+use std::io;
+use std::cmp::Ordering;
+
+struct Matrix{
+    rows: usize,
+    cols: usize,
+    data: Vec<i64>,
+}
 
 fn main() {
     println!("[TEST]");
     let args: Vec<String> = env::args().collect(); //Speichert Command Line Parameter
     println!("arguments:{:?}",args); //Test Ausgabe der Parameter
 
+    let mut count = 0;
+
+    for a in args.iter(){
+        println!("argumente:{:?}",a);
+        count = count +1;
+    }
+    println!("Anzahl Argumente:{}",count);
+
+
     //Argumente in Variablen Speichern:
     let mat_a = &args[1];
     let mat_op = &args[2];
     let mat_b = &args[3];
+    let mod_out = &args[4];
+    let mat_path = &args[5];
+
+    //Nach token trennen, test: nach Spaces:
+    for token in mat_a.split_whitespace(){
+        println!("{}",token);
+    }
+
+    //Nach ; splitten
+    let mut split = "ein kleines ; beispiel string".split(";");
+    for s in split{
+        println!("{}", s);
+    }
+    //in einem Vektor collecten:
+    //ACHTUNG: funktioniert nicht
+    //let vec: Vec<&str> = split.collect();
 
     //Test Ausgabe der Parameter:
     println!("Matrix A:{:?} {:?} MatrixB:{:?}",mat_a, mat_op, mat_b);
@@ -39,8 +72,9 @@ fn main() {
     let hello_world2: &'static str = "Hello, World";
 
 
-    
+
     let path = Path::new("lorem_ipsum.txt");
+    let path = Path::new(mat_path);
     let display = path.display();
 
     // Oeffnet Datei im Write-Only Modus, returns `io::Result<File>`
