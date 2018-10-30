@@ -29,15 +29,16 @@ fn main() {
     
 
     //Nach token trennen, test: nach Spaces:
-    for token in mat_a.split_whitespace(){
-        println!("{}",token);
-    }
+    //for token in mat_a.split_whitespace(){
+    //    println!("{}",token);
+    //}
 
     //Nach ; splitten
     let mut vec_a: Vec<&str> = Vec::new();
     let mut vec_b: Vec<&str> = Vec::new();
-    println!("Test: split mat_a nach ';'");
+    println!("Test: split mat_a und mat_b nach ';'");
 
+    //Splitte mat_a
     let mut split_a = mat_a.split(";");
 
     for s in split_a{
@@ -45,26 +46,40 @@ fn main() {
         vec_a.push(s);
     }
 
+    //Splitte mat_b
+    let mut split_b = mat_b.split(';');
+
+    for s in split_b{
+        println!("{}",s);
+        vec_b.push(s);
+    }
+
+
     println!("Test: gebe vec_a aus:");
     for x in vec_a{
         println!("{}",x);
     }
 
+     println!("Test: gebe vec_b aus:");
+    for x in vec_b{
+        println!("{}",x);
+    }
+    
     let mut split_element_a = vec_a.split(",");
     let mut veci64_a: Vec<i64> = Vec::new();
-
+    /*
     println!("Test: splite a nach ','");
     for s in split_element_a{
-        println!("{}",s);
-        let my_int = from_str::<int>(s); //string nach int casten
-        veci64_a.push(my_int);
+        println!("{:?}",&s);
+        veci64_a.push(s);
+        
     }
 
     println!("Test: veci64_a ausgeben:");
     for x in veci64_a{
         println!("{}",x);
     }
+    */
 
-
-    println!("Matrix A:{:?} {:?} MatrixB:{:?}",mat_a, mat_op, mat_b);
+    //println!("Matrix A:{:?} {:?} MatrixB:{:?}",mat_a, mat_op, mat_b);
 }
