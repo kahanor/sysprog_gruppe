@@ -1,0 +1,7 @@
+[TEST]
+2,3;4,3
+ein kleines 
+ beispiel string
+Matrix A:"2,3;4,3" "+" MatrixB:"1,0;0,1"
+[TEST] Strings zerteilen ...
+TEST_S
