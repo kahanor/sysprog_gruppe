@@ -1,11 +1,6 @@
-use std::error::Error;
-use std::io::prelude::*;
-use std::fs::File;
-use std::path::Path;
 use std::env;
-use std::io;
-use std::cmp::Ordering;
 use std::vec::Vec;
+use std::str;
 
 fn main() {
     println!("[TEST]");
@@ -54,32 +49,43 @@ fn main() {
         vec_b.push(s);
     }
 
-
+    /*
     println!("Test: gebe vec_a aus:");
     for x in vec_a{
         println!("{}",x);
-    }
+    }*/
 
      println!("Test: gebe vec_b aus:");
     for x in vec_b{
         println!("{}",x);
     }
     
-    let mut split_element_a = vec_a.split(",");
+    //let mut split_element_a = vec_a.split(",");
     let mut veci64_a: Vec<i64> = Vec::new();
-    /*
-    println!("Test: splite a nach ','");
-    for s in split_element_a{
-        println!("{:?}",&s);
-        veci64_a.push(s);
-        
+
+    println!("Test: a nach ',' splitten ...");
+    for line in vec_a{
+        let mut split_element = line.split(",");
+        println!("{:?}",split_element);
+        let my_int:<i64> = split_element.parse::<i64>(); //das parsen funktioniert nicht
+        veci64_a.push(my_int);
     }
+    
+
 
     println!("Test: veci64_a ausgeben:");
     for x in veci64_a{
         println!("{}",x);
     }
-    */
+    
 
     //println!("Matrix A:{:?} {:?} MatrixB:{:?}",mat_a, mat_op, mat_b);
+
+    /*
+    *To Do Liste:
+    *
+    * Nach " , " splitten + String nach <i64> konvertieren und in einem i64 Vektor speichern
+    *Matrizen addieren bzw. multiplizieren
+    *Ausgabe des Ergebnis
+    */
 }
